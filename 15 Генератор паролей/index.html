@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Генератор пароля</title>
+ <link rel="stylesheet" href="style.css">
+ <script defer src="script.js"></script>
+</head>
+<body>
+
+ <div class="container">
+  <h1>Генератор пароля</h1>
+  <div>
+   <label for="length">Выберите длину пароля (8-128)</label>
+   <input type="number" id="length" min="8" max="128" value="8">
+  </div>
+  <div>
+   <label for="lowercase">Включить буквы нижнего регистра:</label>
+   <input type="checkbox" id="lowercase" checked>
+  </div>
+  <div>
+   <label for="uppercase">Включить буквы верхнего регистра:</label>
+   <input type="checkbox" id="uppercase" checked>
+  </div>
+  <div>
+   <label for="numbers">Включить цифры:</label>
+   <input type="checkbox" id="numbers" checked>
+  </div>
+  <div>
+   <label for="symbols">Включить символы:</label>
+   <input type="checkbox" id="symbols" checked>
+  </div>
+  <button onclick="generatePassword()">Создать пароль</button>
+  <div class="password_container">
+   <p id="password"></p>
+  </div>
+ </div>
+
+</body>
+</html>
