@@ -1,0 +1,17 @@
+C:\Users\crunc\Desktop\App\App\obj\Debug\net6.0-windows\App.csproj.AssemblyReference.cache
+C:\Users\crunc\Desktop\App\App\obj\Debug\net6.0-windows\App.Form1.resources
+C:\Users\crunc\Desktop\App\App\obj\Debug\net6.0-windows\App.csproj.GenerateResource.cache
+C:\Users\crunc\Desktop\App\App\obj\Debug\net6.0-windows\App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\crunc\Desktop\App\App\obj\Debug\net6.0-windows\App.AssemblyInfoInputs.cache
+C:\Users\crunc\Desktop\App\App\obj\Debug\net6.0-windows\App.AssemblyInfo.cs
+C:\Users\crunc\Desktop\App\App\obj\Debug\net6.0-windows\App.csproj.CoreCompileInputs.cache
+C:\Users\crunc\Desktop\App\App\bin\Debug\net6.0-windows\App.exe
+C:\Users\crunc\Desktop\App\App\bin\Debug\net6.0-windows\App.deps.json
+C:\Users\crunc\Desktop\App\App\bin\Debug\net6.0-windows\App.runtimeconfig.json
+C:\Users\crunc\Desktop\App\App\bin\Debug\net6.0-windows\App.dll
+C:\Users\crunc\Desktop\App\App\bin\Debug\net6.0-windows\App.pdb
+C:\Users\crunc\Desktop\App\App\obj\Debug\net6.0-windows\App.dll
+C:\Users\crunc\Desktop\App\App\obj\Debug\net6.0-windows\refint\App.dll
+C:\Users\crunc\Desktop\App\App\obj\Debug\net6.0-windows\App.pdb
+C:\Users\crunc\Desktop\App\App\obj\Debug\net6.0-windows\App.genruntimeconfig.cache
+C:\Users\crunc\Desktop\App\App\obj\Debug\net6.0-windows\ref\App.dll
