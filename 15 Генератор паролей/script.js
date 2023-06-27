@@ -4,7 +4,11 @@ const numbers = '0123456789';
 const symbols = '!@#$%^&*()_+~`|}{[]:;?><,./-=';
 
 function generatePassword() {
-  const length = document.getElementById('length').value;
+  let length = document.getElementById('length').value;
+
+  if(length < 8) length = 8;
+  else if (length > 128) length = 128;
+
   const lowercaseChecked = document.getElementById('lowercase').checked;
   const uppercaseChecked = document.getElementById('uppercase').checked;
   const numbersChecked = document.getElementById('numbers').checked;
