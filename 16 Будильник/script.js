@@ -25,6 +25,7 @@ function setAlarm() {
 
  setTimeout(function() {
   alarmSound.play();
+  alert('Сигнал сработал');
  }, timeToAlarm);
 }
 
