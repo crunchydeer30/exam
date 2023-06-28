@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Блокнот</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-2xl font-bold mb-4">Блокнот</h1>
+      <div class="mb-4">
+        <label for="filename" class="block">Название файла:</label>
+        <input
+          type="text"
+          id="filename"
+          class="border border-gray-300 px-4 py-2 w-full"
+        />
+      </div>
+      <div class="mb-4">
+        <label for="content" class="block">Содержимое:</label>
+        <textarea
+          id="content"
+          class="border border-gray-300 px-4 py-2 w-full h-48"
+        ></textarea>
+      </div>
+      <div>
+        <button
+          id="save"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2"
+        >
+          Сохранить
+        </button>
+        <button
+          id="saveAs"
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mr-2"
+        >
+          Сохранить как
+        </button>
+        <button
+          id="open"
+          class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4"
+        >
+          Открыть
+        </button>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const saveButton = document.getElementById("save");
+        const saveAsButton = document.getElementById("saveAs");
+        const openButton = document.getElementById("open");
+
+        saveButton.addEventListener("click", saveFile);
+        saveAsButton.addEventListener("click", saveFileAs);
+        openButton.addEventListener("click", confirmOpenFile);
+
+        let unsavedChanges = false;
+
+        function saveFile() {
+          const filename = document.getElementById("filename").value;
+          const content = document.getElementById("content").value;
+          if (!filename) {
+            alert("Пожалуйста, введите имя файла.");
+            return;
+          }
+          const blob = new Blob([content], { type: "text/plain" });
+          const anchor = document.createElement("a");
+          anchor.href = URL.createObjectURL(blob);
+          anchor.download = filename;
+          anchor.click();
+          unsavedChanges = false;
+        }
+
+        function saveFileAs() {
+          const filename = document.getElementById("filename").value;
+          const content = document.getElementById("content").value;
+          if (!filename) {
+            alert("Пожалуйста, введите имя файла.");
+            return;
+          }
+          const blob = new Blob([content], {
+            type: "application/octet-stream",
+          });
+          const anchor = document.createElement("a");
+          anchor.href = URL.createObjectURL(blob);
+          anchor.download = filename;
+          anchor.click();
+          unsavedChanges = false;
+        }
+
+        function confirmOpenFile() {
+          if (unsavedChanges) {
+            const confirmResult = confirm(
+              "У вас есть несохраненные изменения. Хотите сохранить изменения перед открытием нового файла?"
+            );
+            if (confirmResult) {
+              saveFile();
+            } else {
+              openFile();
+            }
+          } else {
+            openFile();
+          }
+        }
+
+        function openFile() {
+          const fileInput = document.createElement("input");
+          fileInput.type = "file";
+          fileInput.accept = "text/plain";
+          fileInput.style.display = "none";
+          fileInput.addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              const currentFilename = document.getElementById("filename").value;
+              const currentContent = document.getElementById("content").value;
+              if (unsavedChanges && (currentFilename || currentContent)) {
+                const confirmResult = confirm(
+                  "У вас есть несохраненные изменения. Хотите сохранить изменения перед открытием нового файла?"
+                );
+                if (confirmResult) {
+                  saveFile();
+                }
+              }
+              document.getElementById("filename").value = file.name;
+              document.getElementById("content").value = e.target.result;
+              unsavedChanges = false;
+            };
+            reader.readAsText(file);
+          });
+          document.body.appendChild(fileInput);
+          fileInput.click();
+          document.body.removeChild(fileInput);
+        }
+
+        document
+          .getElementById("filename")
+          .addEventListener("input", function () {
+            unsavedChanges = true;
+          });
+
+        document
+          .getElementById("content")
+          .addEventListener("input", function () {
+            unsavedChanges = true;
+          });
+      });
+    </script>
+  </body>
+</html>
