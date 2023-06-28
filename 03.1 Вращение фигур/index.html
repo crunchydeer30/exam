@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Вращение каркасных фигур</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-3xl">Вращение каркасных фигур</h1>
+      <div class="flex justify-center items-center mb-8">
+        <div class="flex items-center mr-4">
+          <input
+            id="speedSlider"
+            type="range"
+            min="1"
+            max="10"
+            value="5"
+            class="w-40"
+          />
+          <label for="speedSlider" class="ml-2">Скорость</label>
+        </div>
+        <div class="flex items-center">
+          <div class="dropdown">
+            <div class="selected-shape dropdown-item">Круг</div>
+            <div class="dropdown-content">
+              <div class="dropdown-item" onclick="selectShape('circle')">
+                Круг
+              </div>
+              <div class="dropdown-item" onclick="selectShape('square')">
+                Квадрат
+              </div>
+              <div class="dropdown-item" onclick="selectShape('triangle')">
+                Треугольник
+              </div>
+              <div class="dropdown-item" onclick="selectShape('trapezoid')">
+                Трапеция
+              </div>
+            </div>
+          </div>
+          <label for="shapeSelect" class="ml-2">Фигура</label>
+        </div>
+      </div>
+      <div id="shapeContainer" class="relative h-96"></div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
