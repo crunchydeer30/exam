@@ -5,6 +5,7 @@ describe('Проверка кнопки "Старт"', () => {
         cy.visit('http://127.0.0.1:3002');
         cy.get('button').contains('Старт').click();
         cy.get('h1').should('not.contain', '00:00:00');
+        cy.pause();
     })
 });
 
@@ -13,5 +14,6 @@ describe('Проверка кнопки "Сброс"', () => {
         cy.visit('http://127.0.0.1:3002');
         cy.get('button').contains('Сброс').click();
         cy.get('h1').should('contain', '00:00:00');
+        cy.pause();
     })
 })
