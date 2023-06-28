@@ -1,0 +1,23 @@
+CREATE TRIGGER Kvitanzia_INSERT
+ON Kvitanzia
+AFTER INSERT
+AS
+INSERT INTO History (ID_kvitanzii, Operation)
+SELECT id, 'Добавлена квитанция, плательщиком ' + CONVERT(varchar(10), Platelshik) + ' на сумму ' + CONVERT(varchar(10), summa)  + ' рубля'
+FROM INSERTED
+
+CREATE TRIGGER Kvitanzia_UPDATE
+ON Kvitanzia
+AFTER UPDATE
+AS
+INSERT INTO History (ID_kvitanzii, Operation)
+SELECT id, 'Изменена квитанция, плательщика ' + CONVERT(varchar(10), Platelshik) + ' на сумму ' + CONVERT(varchar(10), summa)  + ' рубля'
+FROM INSERTED
+
+CREATE TRIGGER Kvitanzia_DELETE
+ON Kvitanzia
+AFTER DELETE
+AS
+INSERT INTO History (ID_kvitanzii, Operation)
+SELECT id, 'Удалена квитанция, плательщика ' + CONVERT(varchar(10), Platelshik) + ' на сумму ' + CONVERT(varchar(10), summa)  + ' рубля'
+FROM DELETED

@@ -1,0 +1,21 @@
+Create PROCEDURE [dbo].[Insert_Master] (@fn varchar(100), @ln varchar(100) , @dp date)
+AS
+BEGIN
+	SET NOCOUNT ON
+INSERT INTO Master(firstname, lastname, datapriema)
+VALUES		(@fn, @ln, @dp)
+END 
+
+CREATE PROCEDURE [dbo].[Update_Master_Datapriema] (@fn varchar(100), @ln varchar(100) , @dp date)
+AS
+BEGIN
+	SET NOCOUNT ON
+Update Master set datapriema = @dp where firstname =  @fn and lastname = @ln 
+END 
+
+Create PROCEDURE [dbo].[Delete_Master] (@fn varchar(100), @ln varchar(100))
+AS
+BEGIN
+	SET NOCOUNT ON
+Delete Master where firstname =  @fn and lastname = @ln
+END 

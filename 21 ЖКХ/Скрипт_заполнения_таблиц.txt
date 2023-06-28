@@ -1,0 +1,14 @@
+
+INSERT [dbo].[Platelshik] ([fam], [name]) VALUES ('Иванов', 'Иван Иванович')
+INSERT [dbo].[Platelshik] ([fam], [name]) VALUES ('Петров', 'Петр Петрович')
+INSERT [dbo].[Platelshik] ([fam], [name]) VALUES ('Алексеев', 'Алексей Алексеевич')
+
+
+INSERT [dbo].[Kvartira] ([ploshad], [kolvo_prozhiv], [adres], [platelshik]) VALUES (20, 2, 'Великий Новгород Кочетова 3 100', 1)
+INSERT [dbo].[Kvartira] ([ploshad], [kolvo_prozhiv], [adres], [platelshik]) VALUES (15, 1, 'Великий Новгород Ломоносова 10 6', 2)
+INSERT [dbo].[Kvartira] ([ploshad], [kolvo_prozhiv], [adres], [platelshik]) VALUES (30, 3, 'Великий Новгород Мира 29 36', 3)
+
+INSERT [dbo].[Kvitanzia] ([platelshik], [kvartira], [srok], [data_pred], [data_posl], [summa], [peni]) VALUES (1, 1, '2022-03-30', '2022-02-30', '2022-04-01', 1850, 50)
+INSERT [dbo].[Kvitanzia] ([platelshik], [kvartira], [srok], [data_pred], [data_posl], [summa], [peni]) VALUES (2, 2, '2022-04-30', '2022-03-30', '2022-05-02', 1350, 100)
+INSERT [dbo].[Kvitanzia] ([platelshik], [kvartira], [srok], [data_pred], [data_posl], [summa], [peni]) VALUES (3, 3, '2022-05-30', '2022-04-30', '2022-06-03', 2050, 150)
+

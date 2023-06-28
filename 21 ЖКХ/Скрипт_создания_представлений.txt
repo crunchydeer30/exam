@@ -1,0 +1,4 @@
+CREATE VIEW Visible_Kvitanzia AS
+Select k.id AS ИД, RTRIM(p.fam) + ' ' + RTRIM(p.name) AS Плательщик, kv.adres AS Квартира, srok AS 'Крайний срок', data_pred AS 'Предыдущие показания', data_posl AS 'Последние начисления', summa AS Сумма, peni AS Пени from Kvitanzia k inner join Platelshik p on k.platelshik = p.id inner join Kvartira kv on k.kvartira = kv.id
+
+
