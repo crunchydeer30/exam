@@ -1,0 +1,15 @@
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-quantity {
+  cursor: pointer;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
