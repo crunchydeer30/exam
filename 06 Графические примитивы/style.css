@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  background: #f5f5f5;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  overflow: hidden;
+  display: flex;
+  height: 500px;
+  border-radius: 10px;
+}
+
+.toolbar {
+  flex-shrink: 0;
+  height: 100%;
+  width: 200px;
+  margin-right: 20px;
+  border-radius: 15px;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.drawing-board {
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+
+
