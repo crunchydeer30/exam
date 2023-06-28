@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Будильник</title>
+ <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+ <div class="container">
+  <div class="header">
+   <h1>Будильник</h1>
+   <h2>Поставьте время для сигнала</h2>
+  </div>
+  <div class="time-wrapper">
+   <input id="hour" type="number" min="0" max="23">:
+   <input id="minute" type="number" min="0" max="59">:
+   <input id="second" type="number" min="0" max="59">
+  </div>
+  <div class="button-wrapper">
+   <button id="set-alarm" onclick="setAlarm()">Установить</button>
+   <button id="stop-alarm" onclick="stopAlarm()">Остановить</button>
+  </div>
+ </div>
+
+ <audio id="alarm-sound" loop>
+  <source src="alarm-sound.mp3" type="audio/mpeg">
+  <source src="alarm-sound.ogg" type="audio/ogg">
+ </audio>
+
+ <script src="script.js"></script>
+</body>
+</html>
