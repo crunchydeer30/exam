@@ -1,0 +1,11 @@
+C:\Users\Владислава\Desktop\Учеба\МодульныйЭкзамен\ПриложениеКонтакты\bin\Debug\ПриложениеКонтакты.exe.config
+C:\Users\Владислава\Desktop\Учеба\МодульныйЭкзамен\ПриложениеКонтакты\bin\Debug\ПриложениеКонтакты.exe
+C:\Users\Владислава\Desktop\Учеба\МодульныйЭкзамен\ПриложениеКонтакты\bin\Debug\ПриложениеКонтакты.pdb
+C:\Users\Владислава\Desktop\Учеба\МодульныйЭкзамен\ПриложениеКонтакты\obj\Debug\ПриложениеКонтакты.csproj.AssemblyReference.cache
+C:\Users\Владислава\Desktop\Учеба\МодульныйЭкзамен\ПриложениеКонтакты\obj\Debug\ПриложениеКонтакты.csproj.SuggestedBindingRedirects.cache
+C:\Users\Владислава\Desktop\Учеба\МодульныйЭкзамен\ПриложениеКонтакты\obj\Debug\ПриложениеКонтакты.Form1.resources
+C:\Users\Владислава\Desktop\Учеба\МодульныйЭкзамен\ПриложениеКонтакты\obj\Debug\ПриложениеКонтакты.Properties.Resources.resources
+C:\Users\Владислава\Desktop\Учеба\МодульныйЭкзамен\ПриложениеКонтакты\obj\Debug\ПриложениеКонтакты.csproj.GenerateResource.cache
+C:\Users\Владислава\Desktop\Учеба\МодульныйЭкзамен\ПриложениеКонтакты\obj\Debug\ПриложениеКонтакты.csproj.CoreCompileInputs.cache
+C:\Users\Владислава\Desktop\Учеба\МодульныйЭкзамен\ПриложениеКонтакты\obj\Debug\ПриложениеКонтакты.exe
+C:\Users\Владислава\Desktop\Учеба\МодульныйЭкзамен\ПриложениеКонтакты\obj\Debug\ПриложениеКонтакты.pdb
