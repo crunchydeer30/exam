@@ -6,7 +6,6 @@ namespace App
         Double result = 0;
         String operationPerformed = "";
         bool isOpeartionPerformed = false;
-        bool isZeroDivision = true;
 
         public Form1()
         {
@@ -45,7 +44,6 @@ namespace App
                     display.Text = subtract(result, secondOperand).ToString();
                     break;
                 case "/":
-                    if (isZeroDivision)
                     display.Text = div(result, secondOperand).ToString();      
                     break;
                 case "*":
@@ -93,19 +91,12 @@ namespace App
 
         private Double div(Double numOne, Double numTwo)
         {
-            try
+
+            if (numTwo == 0)
             {
-                if (numTwo == 0)
-                {
-                    throw new DivideByZeroException();
-                }
-                return numOne / numTwo;
+                throw new DivideByZeroException("Деление на ноль запрещено");
             }
-            catch (DivideByZeroException e)
-            {
-                isZeroDivision = true;
-                return 0;
-            }
+            return numOne / numTwo;
         }
 
 
