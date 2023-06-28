@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Тайм-менеджмент</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .completed {
+        background-color: #c6f6d5;
+      }
+
+      .delete-btn {
+        border-radius: 0.25rem;
+      }
+
+      .delete-btn:hover {
+        background-color: #e53e3e;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+      <h1 class="text-3xl mb-4">Тайм-менеджмент</h1>
+
+      <div id="calendar" class="mb-4">
+        <label for="date">Выберите день:</label>
+        <input type="date" id="date" min="2023-06-28" />
+      </div>
+
+      <div id="task-form" class="mb-4 hidden">
+        <div>
+          <label for="time">Выберите отрезок времени:</label>
+          <input type="time" id="time" />
+        </div>
+        <div class="pt-4">
+          <label for="activity">Название сферы деятельности:</label>
+          <input type="text" id="activity" />
+        </div>
+        <button
+          id="save-btn"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4"
+        >
+          Сохранить
+        </button>
+      </div>
+
+      <div id="tasks" class="hidden pt-8">
+        <h2 class="text-2xl mb-2">
+          Запланированные сферы деятельности на выбранный день:
+        </h2>
+        <ul id="task-list" class="mb-4"></ul>
+      </div>
+    </div>
+
+    <script>
+      const dateInput = document.getElementById("date");
+      const taskForm = document.getElementById("task-form");
+      const saveBtn = document.getElementById("save-btn");
+      const taskList = document.getElementById("task-list");
+
+      // При выборе даты
+      dateInput.addEventListener("change", function () {
+        const selectedDate = dateInput.value;
+
+        // Проверка, что выбрана будущая дата
+        if (selectedDate >= getCurrentDate()) {
+          taskForm.classList.remove("hidden");
+          document.getElementById("tasks").classList.remove("hidden");
+          taskList.innerHTML = "";
+
+          // Загрузка сохраненных задач
+          const tasks = loadTasks(selectedDate);
+          renderTasks(tasks);
+        } else {
+          taskForm.classList.add("hidden");
+          document.getElementById("tasks").classList.add("hidden");
+          alert("Выберите будущий день!");
+        }
+      });
+
+      // При сохранении задачи
+      saveBtn.addEventListener("click", function () {
+        const time = document.getElementById("time").value;
+        const activity = document.getElementById("activity").value;
+        const selectedDate = dateInput.value;
+
+        if (time.trim() === "" || activity.trim() === "") {
+          alert("Заполните все поля!");
+          return;
+        }
+
+        const task = {
+          time: time,
+          activity: activity,
+          completed: false,
+        };
+
+        const tasks = loadTasks(selectedDate);
+        tasks.push(task);
+        saveTasks(selectedDate, tasks);
+
+        renderTasks(tasks);
+        document.getElementById("time").value = "";
+        document.getElementById("activity").value = "";
+      });
+
+      // При клике на галочку
+      taskList.addEventListener("click", function (event) {
+        if (event.target.matches(".checkbox")) {
+          const selectedDate = dateInput.value;
+          const tasks = loadTasks(selectedDate);
+          const index = event.target.dataset.index;
+          tasks[index].completed = !tasks[index].completed;
+          saveTasks(selectedDate, tasks);
+          renderTasks(tasks);
+        }
+      });
+
+      // При клике на удаление задачи
+      taskList.addEventListener("click", function (event) {
+        if (event.target.matches(".delete-btn")) {
+          const selectedDate = dateInput.value;
+          const tasks = loadTasks(selectedDate);
+          const index = event.target.dataset.index;
+          tasks.splice(index, 1);
+          saveTasks(selectedDate, tasks);
+          renderTasks(tasks);
+        }
+      });
+
+      // Загрузка задач из localStorage
+      function loadTasks(selectedDate) {
+        const tasks = JSON.parse(localStorage.getItem(selectedDate)) || [];
+        return tasks;
+      }
+
+      // Сохранение задач в localStorage
+      function saveTasks(selectedDate, tasks) {
+        localStorage.setItem(selectedDate, JSON.stringify(tasks));
+      }
+
+      // Отрисовка задач
+      function renderTasks(tasks) {
+        taskList.innerHTML = "";
+
+        for (let i = 0; i < tasks.length; i++) {
+          const task = tasks[i];
+          const listItem = document.createElement("li");
+          listItem.classList.add("mb-4", "flex", "items-center");
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.classList.add("mr-2", "checkbox");
+          checkbox.dataset.index = i;
+
+          const contentContainer = document.createElement("div");
+          contentContainer.classList.add(
+            "bg-white",
+            "p-4",
+            "w-1/2",
+            "shadow-md",
+            "rounded-md",
+            "flex",
+            "items-center"
+          );
+
+          const time = document.createElement("span");
+          time.classList.add("font-bold", "mr-2");
+          time.textContent = task.time;
+
+          const activity = document.createElement("span");
+          activity.textContent = task.activity;
+
+          contentContainer.appendChild(time);
+          contentContainer.appendChild(activity);
+
+          if (task.completed) {
+            contentContainer.classList.add("completed");
+          }
+
+          listItem.appendChild(checkbox);
+          listItem.appendChild(contentContainer);
+
+          const deleteBtn = document.createElement("button");
+          deleteBtn.textContent = "Удалить";
+          deleteBtn.classList.add(
+            "ml-4",
+            "px-3",
+            "py-1",
+            "bg-red-500",
+            "text-white",
+            "delete-btn"
+          );
+          deleteBtn.dataset.index = i;
+          listItem.appendChild(deleteBtn);
+
+          taskList.appendChild(listItem);
+        }
+      }
+
+      // Получение текущей даты в формате YYYY-MM-DD
+      function getCurrentDate() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = (now.getMonth() + 1).toString().padStart(2, "0");
+        const day = now.getDate().toString().padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      }
+
+      // Пример вывода в консоли: console.log(localStorage.getItem("2023-07-01"));
+    </script>
+  </body>
+</html>

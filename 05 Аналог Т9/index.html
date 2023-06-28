@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>T9 Аналог</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+      <h1 class="text-2xl font-bold mb-4">T9 Аналог</h1>
+      <input
+        type="text"
+        id="input"
+        class="border border-gray-300 rounded px-4 py-2 mb-4 w-full"
+        placeholder="Введите текст"
+      />
+      <div id="suggestions" class="flex flex-wrap gap-2 mb-4"></div>
+      <button
+        id="clearBtn"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Очистить
+      </button>
+    </div>
+
+    <script>
+      // Список слов для аналога Т9
+      const words = [
+        "привет",
+        "приветствую",
+        "пока",
+        "до",
+        "свидания",
+        "спасибо",
+        "большое",
+        "как",
+        "дела",
+        // Добавьте здесь свои слова
+      ];
+
+      const inputElement = document.getElementById("input");
+      const suggestionsElement = document.getElementById("suggestions");
+      const clearButton = document.getElementById("clearBtn");
+      let inputWords = []; // Хранит введенные пользователем слова
+
+      // Обработчик ввода текста
+      inputElement.addEventListener("input", handleInput);
+
+      // Обработчик клика по кнопке "Очистить"
+      clearButton.addEventListener("click", clearInput);
+
+      function handleInput() {
+        const inputText = inputElement.value.toLowerCase();
+        inputWords = inputText.split(" "); // Разделяет введенный текст на отдельные слова
+        const currentWord = getCurrentWord(inputText); // Получает текущее незавершенное слово
+        const suggestions = getMatchingSuggestions(currentWord); // Получает предложения для текущего слова
+
+        renderSuggestions(suggestions); // Отображает предложения
+      }
+
+      function getCurrentWord(inputText) {
+        const lastSpaceIndex = inputText.lastIndexOf(" "); // Находит индекс последнего пробела
+        return inputText.substring(lastSpaceIndex + 1); // Возвращает последнее слово после пробела
+      }
+
+      function getMatchingSuggestions(inputWord) {
+        if (!inputWord) {
+          return [];
+        }
+
+        const matchingWords = words.filter((word) =>
+          word.startsWith(inputWord)
+        ); // Фильтрует слова, которые начинаются с текущего слова
+
+        if (!matchingWords.includes(inputWord)) {
+          const suggestedWords = getSuggestedWords(inputWord);
+          return suggestedWords;
+        }
+
+        return matchingWords;
+      }
+
+      function getSuggestedWords(inputWord) {
+        const suggestedWords = [];
+
+        words.forEach((word) => {
+          const similarity = calculateSimilarity(inputWord, word);
+
+          if (similarity >= 0.5) {
+            suggestedWords.push(word);
+          }
+        });
+
+        return suggestedWords;
+      }
+
+      function calculateSimilarity(inputWord, word) {
+        const inputLength = inputWord.length;
+        const wordLength = word.length;
+        const maxLength = Math.max(inputLength, wordLength);
+
+        let matchingCount = 0;
+
+        for (let i = 0; i < maxLength; i++) {
+          if (inputWord[i] === word[i]) {
+            matchingCount++;
+          }
+        }
+
+        return matchingCount / maxLength;
+      }
+
+      function renderSuggestions(suggestions) {
+        suggestionsElement.innerHTML = "";
+
+        suggestions.forEach((suggestion) => {
+          const suggestionItem = document.createElement("div");
+          suggestionItem.classList.add(
+            "bg-gray-200",
+            "px-4",
+            "py-2",
+            "rounded",
+            "text-gray-800",
+            "cursor-pointer"
+          );
+          suggestionItem.textContent = suggestion;
+          suggestionItem.addEventListener("click", () => {
+            replaceLastWord(suggestion); // Заменяет последнее незавершенное слово выбранным предложением
+            clearSuggestions();
+          });
+          suggestionsElement.appendChild(suggestionItem);
+        });
+      }
+
+      function replaceLastWord(replacement) {
+        const inputText = inputElement.value.toLowerCase();
+        const lastSpaceIndex = inputText.lastIndexOf(" "); // Находит индекс последнего пробела
+        const updatedInputText =
+          inputText.substring(0, lastSpaceIndex + 1) + replacement; // Заменяет последнее слово выбранным предложением
+        inputElement.value = updatedInputText;
+        inputWords[inputWords.length - 1] = replacement; // Обновляет последнее слово в массиве введенных слов
+      }
+
+      function clearInput() {
+        inputElement.value = "";
+        inputWords = []; // Очищает массив введенных слов
+        clearSuggestions();
+      }
+
+      function clearSuggestions() {
+        suggestionsElement.innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
