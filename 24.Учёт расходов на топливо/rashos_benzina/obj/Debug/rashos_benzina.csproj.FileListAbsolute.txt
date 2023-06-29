@@ -20,3 +20,14 @@ F:\2996\24.Учёт расходов на топливо\rashos_benzina\obj\Debu
 F:\2996\24.Учёт расходов на топливо\rashos_benzina\obj\Debug\rashos_benzina.csproj.CoreCompileInputs.cache
 F:\2996\24.Учёт расходов на топливо\rashos_benzina\obj\Debug\rashos_benzina.exe
 F:\2996\24.Учёт расходов на топливо\rashos_benzina\obj\Debug\rashos_benzina.pdb
+C:\Users\crunc\Desktop\Экзамен\exam\24.Учёт расходов на топливо\rashos_benzina\bin\Debug\rashos_benzina.exe.config
+C:\Users\crunc\Desktop\Экзамен\exam\24.Учёт расходов на топливо\rashos_benzina\bin\Debug\rashos_benzina.exe
+C:\Users\crunc\Desktop\Экзамен\exam\24.Учёт расходов на топливо\rashos_benzina\bin\Debug\rashos_benzina.pdb
+C:\Users\crunc\Desktop\Экзамен\exam\24.Учёт расходов на топливо\rashos_benzina\obj\Debug\rashos_benzina.csproj.AssemblyReference.cache
+C:\Users\crunc\Desktop\Экзамен\exam\24.Учёт расходов на топливо\rashos_benzina\obj\Debug\rashos_benzina.csproj.SuggestedBindingRedirects.cache
+C:\Users\crunc\Desktop\Экзамен\exam\24.Учёт расходов на топливо\rashos_benzina\obj\Debug\rashos_benzina.Form1.resources
+C:\Users\crunc\Desktop\Экзамен\exam\24.Учёт расходов на топливо\rashos_benzina\obj\Debug\rashos_benzina.Properties.Resources.resources
+C:\Users\crunc\Desktop\Экзамен\exam\24.Учёт расходов на топливо\rashos_benzina\obj\Debug\rashos_benzina.csproj.GenerateResource.cache
+C:\Users\crunc\Desktop\Экзамен\exam\24.Учёт расходов на топливо\rashos_benzina\obj\Debug\rashos_benzina.csproj.CoreCompileInputs.cache
+C:\Users\crunc\Desktop\Экзамен\exam\24.Учёт расходов на топливо\rashos_benzina\obj\Debug\rashos_benzina.exe
+C:\Users\crunc\Desktop\Экзамен\exam\24.Учёт расходов на топливо\rashos_benzina\obj\Debug\rashos_benzina.pdb

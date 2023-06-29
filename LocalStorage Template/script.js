@@ -10,7 +10,11 @@ function main() {
     currentTaskId = 0;
   } else {
     tasks = JSON.parse(localStorage.getItem('tasks'));
-    currentTaskId = tasks.at(-1).id;
+    if (tasks.length > 0) {
+      currentTaskId = tasks.at(-1).id;
+    } else {
+      currentTaskId = 0;
+    }
   }
 
   console.log(tasks);
