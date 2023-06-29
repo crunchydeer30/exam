@@ -7,4 +7,5 @@ module.exports = defineConfig({
     },
   },
   projectId: "h2q7k9",
+  testIsolation: false,
 });
