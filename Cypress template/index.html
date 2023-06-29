@@ -2,23 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Секундомер</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Валидация пароля</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
 
 <body>
-    <div class="stopwatch">
-        <h1>00:00:00</h1>
-
-        <div class="buttons">
-            <button class="btn start">Старт</button>
-            <button class="btn stop">Пауза</button>
-            <button class="btn reset">Сброс</button>
-        </div>
-    </div>
+    <label for="password">Введите пароль:</label>
+    <input type="password" id="password" name="password">
+    <button type="button" onclick="validatePassword()">Проверить</button>
+    <p id="error-message"></p>
 </body>
 
 </html>
